@@ -9,3 +9,68 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  username       String    @unique
+  name           String
+  program        String
+  year           Int
+  profilePicture String
+  objects        Object[]
+  comments       Comment[]
+  tags           Tag[]
+}
+
+model Object {
+  id            String    @unique
+  owner         User      @relation(fields: [ownerUsername], references: [username])
+  ownerUsername String
+  type          Type
+  path          String
+  actualPath    String
+  thumbnail     String
+  size          BigInt
+  name          String?
+  unsorted      Boolean
+  nsfw          Boolean
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  tags          Tag[]
+  comments      Comment[]
+}
+
+model Comment {
+  id             String   @unique
+  object         Object?  @relation(fields: [objectId], references: [id])
+  objectId       String?
+  author         User     @relation(fields: [authorUsername], references: [username])
+  authorUsername String
+  text           String
+  createdAt      DateTime @default(now())
+}
+
+model Tag {
+  id             String  @unique
+  object         Object? @relation(fields: [objectId], references: [id])
+  objectId       String?
+  tagged         User    @relation(fields: [taggedUsername], references: [username])
+  taggedUsername String
+
+  // For use with images specifically
+  useFloatingTag Boolean @default(false)
+  top            Decimal @default(0)
+  left           Decimal @default(0)
+  width          Decimal @default(0)
+  height         Decimal @default(0)
+}
+
+enum Type {
+  IMAGE
+  VIDEO
+  POSTER
+  PATCH
+  MAGAZINE
+  DOCUMENT
+  SONG
+  OTHER
+}
