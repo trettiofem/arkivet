@@ -11,49 +11,60 @@ datasource db {
 }
 
 model User {
-  username       String    @unique
-  name           String
-  program        String
-  year           Int
-  profilePicture String
-  objects        Object[]
-  comments       Comment[]
-  tags           Tag[]
+  username          String     @unique
+  name              String
+  program           String
+  year              Int
+  profilePictureURL String
+  resources         Resource[]
+  comments          Comment[]
+  taggedIn          Tag[]
 }
 
-model Object {
-  id            String    @unique
-  owner         User      @relation(fields: [ownerUsername], references: [username])
+model Resource {
+  ID            String       @unique
+  owner         User         @relation(fields: [ownerUsername], references: [username])
   ownerUsername String
-  type          Type
+  type          ResourceType
   path          String
-  actualPath    String
-  thumbnail     String
+  permanentURL  String
+  thumbnailURL  String
   size          BigInt
   name          String?
   unsorted      Boolean
   nsfw          Boolean
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  tags          Tag[]
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  userTags      Tag[]
   comments      Comment[]
 }
 
+enum ResourceType {
+  IMAGE
+  VIDEO
+  POSTER
+  PATCH
+  MAGAZINE
+  FILE
+  SONG
+  OTHER
+}
+
 model Comment {
-  id             String   @unique
-  object         Object?  @relation(fields: [objectId], references: [id])
-  objectId       String?
-  author         User     @relation(fields: [authorUsername], references: [username])
+  ID             String    @unique
+  resource       Resource? @relation(fields: [resourceID], references: [ID])
+  resourceID     String?
+  author         User      @relation(fields: [authorUsername], references: [username])
   authorUsername String
   text           String
-  createdAt      DateTime @default(now())
+  createdAt      DateTime  @default(now())
 }
 
 model Tag {
-  id             String  @unique
-  object         Object? @relation(fields: [objectId], references: [id])
-  objectId       String?
-  tagged         User    @relation(fields: [taggedUsername], references: [username])
+  ID             String    @unique
+  resource       Resource? @relation(fields: [resourceID], references: [ID])
+  resourceID     String?
+  tagged         User      @relation(fields: [taggedUsername], references: [username])
   taggedUsername String
 
   // For use with images specifically
@@ -62,15 +73,4 @@ model Tag {
   left           Decimal @default(0)
   width          Decimal @default(0)
   height         Decimal @default(0)
-}
-
-enum Type {
-  IMAGE
-  VIDEO
-  POSTER
-  PATCH
-  MAGAZINE
-  DOCUMENT
-  SONG
-  OTHER
 }

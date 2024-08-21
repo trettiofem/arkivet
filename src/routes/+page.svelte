@@ -1,3 +1,14 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-<p class="bg-slate-400">asd</p>
+<script lang="ts">
+    import Button from "$lib/components/ui/button/button.svelte";
+    import * as Resizable from "$lib/components/ui/resizable";
+</script>
+
+<Resizable.PaneGroup direction="horizontal">
+    <Resizable.Pane defaultSize={25} maxSize={25}>
+        <p>Hello</p>
+    </Resizable.Pane>
+    <Resizable.Handle withHandle />
+    <Resizable.Pane>
+        <p>World</p>
+    </Resizable.Pane>
+</Resizable.PaneGroup>
