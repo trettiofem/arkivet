@@ -22,11 +22,11 @@ const config = {
 				foreground: "hsl(var(--foreground) / <alpha-value>)",
 				pink: {
 					DEFAULT: "rgb(var(--pink) / <alpha-value>)",
-					foreground: "rgb(var(--pink-foreground) / <alpha-value>)"
+					foreground: "hsl(var(--background) / <alpha-value>)"
 				},
 				purple: {
 					DEFAULT: "rgb(var(--purple) / <alpha-value>)",
-					foreground: "rgb(var(--purple-foreground) / <alpha-value>)"
+					foreground: "hsl(var(--background) / <alpha-value>)"
 				},
 				primary: {
 					DEFAULT: "hsl(var(--primary) / <alpha-value>)",
