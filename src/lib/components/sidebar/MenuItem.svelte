@@ -4,7 +4,7 @@
     import * as Tooltip from "$lib/components/ui/tooltip";
     import { Icon as IconType } from "lucide-svelte";
 
-    const { text, Icon, href, selected, collapsed }: { text: string; Icon: typeof IconType; href: string; selected: boolean; collapsed: boolean } = $props();
+    const { text, Icon, href, selected, collapsed }: { text: string; Icon: typeof IconType; href?: string; selected: boolean; collapsed: boolean } = $props();
 </script>
 
 {#if collapsed}

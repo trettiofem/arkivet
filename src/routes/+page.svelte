@@ -1,12 +1,13 @@
 <script lang="ts">
     import * as Resizable from "$lib/components/ui/resizable";
-    import Menu from "$lib/components/nav/Menu.svelte";
+    import Menu from "$lib/components/sidebar/Menu.svelte";
+    import Navigation from "$lib/components/navigation/Navigation.svelte";
     import type { PaneAPI } from "paneforge";
     import { onMount } from "svelte";
 
     // Side panel constants
     // Measured in pixels
-    const MAX_SIZE = 320;
+    const MAX_SIZE = 288;
     const MIN_SIZE = 192;
     const COLLAPSED_SIZE = 72;
 
@@ -49,6 +50,16 @@
         }
     }
 
+    function onMenuStateChange(state: "expanded" | "collapsed"): void {
+        if (pane) {
+            if (state === "collapsed") {
+                pane.resize(0);
+            } else {
+                pane.resize(100);
+            }
+        }
+    }
+
     onMount(() => {
         window.addEventListener("resize", onWindowResize);
         lastSize = window.innerWidth;
@@ -62,11 +73,11 @@
 <main class="h-dvh w-dvw">
     <Resizable.PaneGroup direction="horizontal">
         <Resizable.Pane bind:pane {onResize}>
-            <Menu {collapsed} />
+            <Menu {collapsed} {onMenuStateChange} />
         </Resizable.Pane>
         <Resizable.Handle withHandle />
         <Resizable.Pane>
-            <p>Hello, World!</p>
+            <Navigation />
         </Resizable.Pane>
     </Resizable.PaneGroup>
 </main>

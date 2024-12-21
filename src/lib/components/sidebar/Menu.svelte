@@ -26,7 +26,10 @@
     import DarkMode from "lucide-svelte/icons/moon";
     import LightMode from "lucide-svelte/icons/sun";
 
-    const { collapsed }: { collapsed: boolean } = $props();
+    import PanelClose from "lucide-svelte/icons/panel-left-close";
+    import PanelOpen from "lucide-svelte/icons/panel-left-open";
+
+    const { collapsed, onMenuStateChange }: { collapsed: boolean, onMenuStateChange: (state: "expanded" | "collapsed") => void } = $props();
 
     const sections = [
         {
@@ -67,7 +70,7 @@
     {#each sections as section}
         <div class="flex flex-col gap-1">
             {#if !collapsed}
-                <p class="text-xs font-semibold text-muted-foreground">{section.title}</p>
+                <p class="text-xs text-muted-foreground">{section.title}</p>
             {/if}
 
             {#each section.items as item}
@@ -76,20 +79,21 @@
         </div>
     {/each}
 
-    <div class="grow" />
+    <div class="grow"></div>
 
     <div class="flex flex-col gap-1">
         {#if !collapsed}
-            <p class="text-xs font-semibold text-muted-foreground">Inställningar</p>
+            <p class="text-xs text-muted-foreground">Inställningar</p>
         {/if}
         <MenuItem
-            text={$mode === "dark" ? "Ljust läge" : "Mörkt läge"}
-            Icon={$mode === "dark" ? LightMode : DarkMode}
+            text={$mode === "dark" ? "Mörkt läge" : "Ljust läge"}
+            Icon={$mode === "dark" ? DarkMode : LightMode}
             on:click={toggleMode}
             href="#"
             selected={false}
             {collapsed}
         />
         <MenuItem text="Ändra språk" Icon={Language} href="#" selected={false} {collapsed} />
+        <MenuItem text={collapsed ? "Öppna meny" : "Stäng meny"} Icon={collapsed ? PanelOpen : PanelClose} on:click={() => onMenuStateChange(collapsed ? "expanded" : "collapsed")} selected={false} {collapsed} />
     </div>
 </nav>

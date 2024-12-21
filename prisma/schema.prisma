@@ -16,7 +16,7 @@ model User {
   program           String
   year              Int
   profilePictureURL String
-  resources         Resource[]
+  liked             Resource[]
   comments          Comment[]
   taggedIn          Tag[]
 }
