@@ -1,0 +1,109 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+enum ResourceType {
+  IMAGE
+  VIDEO
+  POSTER
+  PATCH
+  MAGAZINE
+  FILE
+}
+
+enum Attribute {
+  NONE
+  NSFW
+  SPOTLIT
+  UNSORTED
+}
+
+model Album {
+  id        String     @id @default(uuid())
+  path      String
+  name      String
+  resources Resource[]
+
+  @@map("Albums")
+}
+
+model Resource {
+  id        String       @id @default(uuid())
+  created   DateTime     @default(now())
+  updated   DateTime     @updatedAt
+  type      ResourceType
+  path      String
+  name      String
+  size      Int
+  uri       String
+  thumbnail String?
+  attribute Attribute
+  comments  Comment[]
+  likes     Like[]
+  tags      Tag[]
+  user      User?        @relation(fields: [userId], references: [id])
+  userId    String?
+  album     Album        @relation(fields: [albumId], references: [id])
+  albumId   String
+
+  @@map("Resources")
+}
+
+model User {
+  id       String     @id @default(uuid())
+  username String
+  program  String
+  year     Int
+  pfp      String?
+  posts    Resource[]
+  comments Comment[]
+  tags     Tag[]
+  likes    Like[]
+
+  @@map("Users")
+}
+
+model Comment {
+  id         String   @id @default(uuid())
+  resource   Resource @relation(fields: [resourceId], references: [id])
+  resourceId String
+  author     User     @relation(fields: [authorId], references: [id])
+  authorId   String
+  text       String
+  created    DateTime
+
+  @@map("Comments")
+}
+
+model Tag {
+  id         String   @id @default(uuid())
+  resource   Resource @relation(fields: [resourceId], references: [id])
+  resourceId String
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String
+
+  // For use with images specifically
+  floatingTag Boolean
+  top         Decimal @default(0)
+  left        Decimal @default(0)
+  width       Decimal @default(0)
+  height      Decimal @default(0)
+
+  @@map("Tags")
+}
+
+model Like {
+  id         String   @id @default(uuid())
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String
+  resource   Resource @relation(fields: [resourceId], references: [id])
+  resourceId String
+
+  @@map("Likes")
+}
