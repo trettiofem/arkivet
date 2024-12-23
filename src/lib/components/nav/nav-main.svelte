@@ -1,5 +1,5 @@
 <script lang="ts">
-    import * as Sidebar from "$lib/components/ui/sidebar/index.js";
+    import * as Sidebar from "$lib/components/ui/sidebar/index";
     import House from "lucide-svelte/icons/house";
     import History from "lucide-svelte/icons/history";
     import Heart from "lucide-svelte/icons/heart";
@@ -10,6 +10,9 @@
     import Newspaper from "lucide-svelte/icons/newspaper";
     import FileText from "lucide-svelte/icons/file-text";
     import MicVocal from "lucide-svelte/icons/mic-vocal";
+    import NavHeader from "./nav-header.svelte";
+    import Search from "lucide-svelte/icons/search";
+    import NavFooter from "./nav-footer.svelte";
 
     const groups = [
         {
@@ -40,11 +43,30 @@
     ];
 </script>
 
-<Sidebar.Root>
+<Sidebar.Root collapsible="icon">
     <Sidebar.Header>
-        <p>Header</p>
+        <NavHeader />
     </Sidebar.Header>
+
+    <Sidebar.Separator />
+
     <Sidebar.Content>
+        <Sidebar.Group>
+            <Sidebar.GroupContent>
+            <Sidebar.Menu>
+                <Sidebar.MenuItem>
+                    <Sidebar.MenuButton>
+                        {#snippet tooltipContent()}
+                            {"Sök"}
+                        {/snippet}
+                        <Search />
+                        <span>Sök</span>
+                    </Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+            </Sidebar.Menu>
+            </Sidebar.GroupContent>
+        </Sidebar.Group>
+
         {#each groups as group (group.title)}
             <Sidebar.Group>
                 <Sidebar.GroupLabel>{group.title}</Sidebar.GroupLabel>
@@ -53,6 +75,9 @@
                         {#each group.items as item (item.title)}
                             <Sidebar.MenuItem>
                                 <Sidebar.MenuButton>
+                                    {#snippet tooltipContent()}
+                                        {item.title}
+                                    {/snippet}
                                     {#snippet child({ props })}
                                         <a href={item.url} {...props}>
                                             <item.icon />
@@ -67,7 +92,11 @@
             </Sidebar.Group>
         {/each}
     </Sidebar.Content>
+
+    <Sidebar.Separator />
+
     <Sidebar.Footer>
-        <p>Footer</p>
+        <NavFooter />
     </Sidebar.Footer>
+    <Sidebar.Rail />
 </Sidebar.Root>
