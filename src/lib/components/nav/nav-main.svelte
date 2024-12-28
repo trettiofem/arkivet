@@ -1,5 +1,6 @@
 <script lang="ts">
     import * as Sidebar from "$lib/components/ui/sidebar/index";
+    
     import House from "lucide-svelte/icons/house";
     import History from "lucide-svelte/icons/history";
     import Heart from "lucide-svelte/icons/heart";
@@ -14,30 +15,32 @@
     import Search from "lucide-svelte/icons/search";
     import NavFooter from "./nav-footer.svelte";
 
+    import * as m from "$lib/paraglide/messages";
+
     const groups = [
         {
-            title: "Utforska",
+            title: m.nav_explore(),
             items: [
-                { title: "Hem", icon: House, url: "#" },
-                { title: "Senaste", icon: History, url: "#" },
-                { title: "Gillade", icon: Heart, url: "#" }
+                { title: m.nav_home(), icon: House, url: "#" },
+                { title: m.nav_latest(), icon: History, url: "#" },
+                { title: m.nav_liked(), icon: Heart, url: "#" }
             ]
         },
         {
-            title: "Media",
+            title: m.nav_media(),
             items: [
-                { title: "Bilder", icon: Image, url: "#" },
-                { title: "Filmer", icon: Video, url: "#" },
-                { title: "Affischer", icon: Scroll, url: "#" },
-                { title: "Märken", icon: Shapes, url: "#" },
-                { title: "Tidningar", icon: Newspaper, url: "#" }
+                { title: m.nav_images(), icon: Image, url: "#" },
+                { title: m.nav_videos(), icon: Video, url: "#" },
+                { title: m.nav_posters(), icon: Scroll, url: "#" },
+                { title: m.nav_patches(), icon: Shapes, url: "#" },
+                { title: m.nav_magazines(), icon: Newspaper, url: "#" }
             ]
         },
         {
-            title: "Övrigt",
+            title: m.nav_other(),
             items: [
-                { title: "Dokument", icon: FileText, url: "#" },
-                { title: "Sånger", icon: MicVocal, url: "#" }
+                { title: m.nav_documents(), icon: FileText, url: "#" },
+                { title: m.nav_songs(), icon: MicVocal, url: "#" }
             ]
         }
     ];
@@ -53,17 +56,18 @@
     <Sidebar.Content>
         <Sidebar.Group>
             <Sidebar.GroupContent>
-            <Sidebar.Menu>
-                <Sidebar.MenuItem>
-                    <Sidebar.MenuButton>
-                        {#snippet tooltipContent()}
-                            {"Sök"}
-                        {/snippet}
-                        <Search />
-                        <span>Sök</span>
-                    </Sidebar.MenuButton>
-                </Sidebar.MenuItem>
-            </Sidebar.Menu>
+                <Sidebar.Menu>
+                    <Sidebar.MenuItem>
+                        <Sidebar.MenuButton>
+                            <!-- TODO: style closer to figma mockup -->
+                            {#snippet tooltipContent()}
+                                {m.nav_search()}
+                            {/snippet}
+                            <Search />
+                            <span>{m.nav_search()}</span>
+                        </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                </Sidebar.Menu>
             </Sidebar.GroupContent>
         </Sidebar.Group>
 

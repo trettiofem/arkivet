@@ -1,6 +1,5 @@
 <script>
     import YearBadge from "$lib/components/year-badge.svelte";
-
 </script>
 
 <p>skibidi</p>

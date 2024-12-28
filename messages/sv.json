@@ -1,0 +1,28 @@
+{
+    "$schema": "https://inlang.com/schema/inlang-message-format",
+
+    "nav_search": "Sök",
+    "nav_explore": "Utforska",
+    "nav_home": "Hem",
+    "nav_latest": "Senaste",
+    "nav_liked": "Gillade",
+    "nav_media": "Media",
+    "nav_images": "Bilder",
+    "nav_videos": "Filmer",
+    "nav_posters": "Affischer",
+    "nav_patches": "Märken",
+    "nav_magazines": "Tidningar",
+    "nav_other": "Övrigt",
+    "nav_documents": "Dokument",
+    "nav_songs": "Sånger",
+    "nav_language": "Språk",
+    "nav_color_scheme": "Färgtema",
+    "nav_color_scheme_light": "Ljust",
+    "nav_color_scheme_dark": "Mörkt",
+    "nav_color_scheme_system": "System",
+    "nav_close": "Stäng sidopanel",
+    "nav_open": "Öppna sidopanel",
+    "nav_user_profile": "Din profil",
+    "nav_user_settings": "Inställningar",
+    "nav_user_log_out": "Logga ut"
+}

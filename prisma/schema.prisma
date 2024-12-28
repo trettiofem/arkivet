@@ -43,7 +43,7 @@ model Resource {
   size      Int
   uri       String
   thumbnail String?
-  attribute Attribute
+  attribute Attribute // bitfield?
   comments  Comment[]
   likes     Like[]
   tags      Tag[]

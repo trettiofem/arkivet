@@ -11,16 +11,18 @@
     import Sun from "lucide-svelte/icons/sun";
     import Moon from "lucide-svelte/icons/moon";
     import Computer from "lucide-svelte/icons/computer";
+
+    import * as m from "$lib/paraglide/messages";
 </script>
 
 <Sidebar.Menu>
     <Sidebar.MenuItem>
         <Sidebar.MenuButton>
             {#snippet tooltipContent()}
-                {"Ändra språk"}
+                {m.nav_language()}
             {/snippet}
             <Globe />
-            <span>Ändra språk</span>
+            <span>{m.nav_language()}</span>
         </Sidebar.MenuButton>
     </Sidebar.MenuItem>
 
@@ -29,11 +31,12 @@
             <DropdownMenu.Trigger>
                 {#snippet child({ props })}
                     <Sidebar.MenuButton {...props}>
-                        {#snippet tooltipContent()}
-                            {"Ljusläge"}
-                        {/snippet}
+                        <!-- TODO: fix this? -->
+                        <!-- {#snippet tooltipContent()} -->
+                        <!--     {"Ljusläge"} -->
+                        <!-- {/snippet} -->
                         <SunMoon />
-                        <span>Ljusläge</span>
+                        <span>{m.nav_color_scheme()}</span>
                     </Sidebar.MenuButton>
                 {/snippet}
             </DropdownMenu.Trigger>
@@ -44,20 +47,20 @@
                 sideOffset={4}
             >
                 <DropdownMenu.Label class="text-xs text-muted-foreground">
-                    Välj ljusläge
+                    {m.nav_color_scheme()}
                 </DropdownMenu.Label>
                 <DropdownMenu.Item>
                     <Sun />
-                    Ljust
+                    {m.nav_color_scheme_light()}
                 </DropdownMenu.Item>
                 <DropdownMenu.Item>
                     <Moon />
-                    Mörkt
+                    {m.nav_color_scheme_dark()}
                 </DropdownMenu.Item>
                 <DropdownMenu.Separator />
                 <DropdownMenu.Item>
                     <Computer />
-                    System
+                    {m.nav_color_scheme_system()}
                 </DropdownMenu.Item>
             </DropdownMenu.Content>
         </DropdownMenu.Root>
@@ -66,10 +69,10 @@
     <Sidebar.MenuItem>
         <Sidebar.MenuButton>
             {#snippet tooltipContent()}
-                {"Stäng sidopanel"}
+                {m.nav_close()}
             {/snippet}
             <PanelLeftClose />
-            <span>Stäng sidopanel</span>
+            <span>{m.nav_close()}</span>
         </Sidebar.MenuButton>
     </Sidebar.MenuItem>
 </Sidebar.Menu>

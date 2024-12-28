@@ -7,6 +7,8 @@
     import CircleUser from "lucide-svelte/icons/circle-user";
     import Settings from "lucide-svelte/icons/settings";
     import LogOut from "lucide-svelte/icons/log-out";
+
+    import * as m from "$lib/paraglide/messages";
 </script>
 
 <Sidebar.Menu>
@@ -49,16 +51,16 @@
                 </DropdownMenu.Label>
                 <DropdownMenu.Item>
                     <CircleUser />
-                    Din profil
+                    {m.nav_user_profile()}
                 </DropdownMenu.Item>
                 <DropdownMenu.Item>
                     <Settings />
-                    Inställningar
+                    {m.nav_user_settings()}
                 </DropdownMenu.Item>
                 <DropdownMenu.Separator />
                 <DropdownMenu.Item>
                     <LogOut />
-                    Logga ut
+                    {m.nav_user_log_out()}
                 </DropdownMenu.Item>
             </DropdownMenu.Content>
         </DropdownMenu.Root>

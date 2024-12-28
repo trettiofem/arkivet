@@ -1,0 +1,28 @@
+{
+    "$schema": "https://inlang.com/schema/inlang-message-format",
+
+    "nav_search": "Search",
+    "nav_explore": "Explore",
+    "nav_home": "Home",
+    "nav_latest": "Latest",
+    "nav_liked": "Liked",
+    "nav_media": "Media",
+    "nav_images": "Images",
+    "nav_videos": "Videos",
+    "nav_posters": "Posters",
+    "nav_patches": "Patches",
+    "nav_magazines": "Magazines",
+    "nav_other": "Other",
+    "nav_documents": "Documents",
+    "nav_songs": "Songs",
+    "nav_language": "Language",
+    "nav_color_scheme": "Color scheme",
+    "nav_color_scheme_light": "Light",
+    "nav_color_scheme_dark": "Dark",
+    "nav_color_scheme_system": "System",
+    "nav_close": "Close side panel",
+    "nav_open": "Open side panel",
+    "nav_user_profile": "Your profile",
+    "nav_user_settings": "Settings",
+    "nav_user_log_out": "Log out"
+}
