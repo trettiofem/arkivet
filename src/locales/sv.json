@@ -23,5 +23,41 @@
     "nav_open": "Öppna sidopanel",
     "nav_user_profile": "Din profil",
     "nav_user_settings": "Inställningar",
-    "nav_user_sign_out": "Logga ut"
+    "nav_user_sign_out": "Logga ut",
+
+    "explorer_menu_back": "Tillbaka",
+    "explorer_menu_forward": "Framåt",
+    "explorer_menu_parent": "Gå till förälder",
+    "explorer_menu_refresh": "Uppdatera",
+    "explorer_menu_bookmark": "Bokmärk album",
+    "explorer_menu_sort_by": "Sortera efter",
+    "explorer_menu_settings": "Inställningar",
+    "explorer_menu_report": "Rapportera innehåll",
+    "explorer_menu_upload": "Ladda upp filer här",
+
+    "explorer_404_title": "Hittade inget.",
+    "explorer_404_help_1": "Tyvärr kunde inget hittas här. Detta kan bero på följande:",
+    "explorer_404_help_2": "Du har skrivit/kopierat in fel sökväg.",
+    "explorer_404_help_3": "Albumet är tomt.",
+    "explorer_404_help_4": "Albumet finns inte.",
+    "explorer_404_help_5": "Om ett misstag har gjorts och det ska finnas något här, vänligen rapportera detta till oss.",
+    "explorer_404_report": "Rapportera problem",
+
+    "explorer_image_view_albums": "Album",
+    "explorer_image_view_images": "Bilder",
+
+    "explorer_file_view_category_document": "Dokument",
+    "explorer_file_view_category_archive": "Arkiv",
+    "explorer_file_view_category_image": "Bild",
+    "explorer_file_view_category_audio": "Ljud",
+    "explorer_file_view_category_source_code": "Källkod",
+    "explorer_file_view_category_json": "JSON",
+    "explorer_file_view_category_video": "Video",
+    "explorer_file_view_category_spreadsheet": "Kalkylark",
+    "explorer_file_view_category_unknown": "Okänd",
+    "explorer_file_view_category_album": "Mapp",
+    "explorer_file_view_header_name": "Namn",
+    "explorer_file_view_header_updated": "Senast ändrad",
+    "explorer_file_view_header_type": "Typ",
+    "explorer_file_view_header_size": "Storlek"
 }

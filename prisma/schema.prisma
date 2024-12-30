@@ -8,6 +8,7 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
+// TODO: rename? AlbumType or something
 enum ResourceType {
   IMAGE
   VIDEO
@@ -25,9 +26,10 @@ enum Attribute {
 }
 
 model Album {
-  id        String     @id @default(uuid())
+  id        String       @id @default(uuid())
   path      String
   name      String
+  type      ResourceType
   resources Resource[]
 
   @@map("Albums")

@@ -14,7 +14,7 @@
     import { ArrowLeft, ArrowRight } from "lucide-svelte";
     import * as Carousel from "$lib/components/ui/carousel/index";
     import { type CarouselAPI } from "$lib/components/ui/carousel/context";
-    import { cn, range } from "$lib/utils";
+    import { cn, range, url } from "$lib/utils";
 
     const { path, name, cognates }: YearSelectorProps = $props();
     let api = $state<CarouselAPI>();
@@ -40,12 +40,8 @@
     });
 
     const getHrefWithSwappedYear = (year: number) => {
-        let href = "/archive/";
-        
-        if (path === "") href += year.toString();
-        else href += [year.toString(), ...path.split("/").slice(1), name].join("/");
-
-        return href;
+        if (path === "") return "/" + url("archive", year.toString());
+        else return "/" + url("archive", year.toString(), ...path.split("/").slice(1), name);
     };
 </script>
 

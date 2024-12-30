@@ -23,5 +23,41 @@
     "nav_open": "Open side panel",
     "nav_user_profile": "Your profile",
     "nav_user_settings": "Settings",
-    "nav_user_sign_out": "Sign out"
+    "nav_user_sign_out": "Sign out",
+
+    "explorer_menu_back": "Back",
+    "explorer_menu_forward": "Forward",
+    "explorer_menu_parent": "Go to parent",
+    "explorer_menu_refresh": "Refresh",
+    "explorer_menu_bookmark": "Bookmark album",
+    "explorer_menu_sort_by": "Sort by",
+    "explorer_menu_settings": "Settings",
+    "explorer_menu_report": "Report content",
+    "explorer_menu_upload": "Upload files here",
+    
+    "explorer_404_title": "Found nothing.",
+    "explorer_404_help_1": "Unfortunately nothing was found here. This may be due to the following:",
+    "explorer_404_help_2": "You have typed/copied the wrong path.",
+    "explorer_404_help_3": "The album is empty.",
+    "explorer_404_help_4": "The album doesn't exist.",
+    "explorer_404_help_5": "If a mistake has been made, and there should be something here, please report this to us.",
+    "explorer_404_report": "Report problem",
+
+    "explorer_image_view_albums": "Albums",
+    "explorer_image_view_images": "Images",
+
+    "explorer_file_view_category_document": "Document",
+    "explorer_file_view_category_archive": "Archive",
+    "explorer_file_view_category_image": "Image",
+    "explorer_file_view_category_audio": "Audio",
+    "explorer_file_view_category_source_code": "Source code",
+    "explorer_file_view_category_json": "JSON",
+    "explorer_file_view_category_video": "Video",
+    "explorer_file_view_category_spreadsheet": "Spreadsheet",
+    "explorer_file_view_category_unknown": "Unknown",
+    "explorer_file_view_category_album": "Directory",
+    "explorer_file_view_header_name": "Name",
+    "explorer_file_view_header_updated": "Modified",
+    "explorer_file_view_header_type": "Type",
+    "explorer_file_view_header_size": "Size"
 }

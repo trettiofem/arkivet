@@ -1,15 +1,4 @@
 <script lang="ts" module>
-    import { Image, Video, Scroll, Shapes, Newspaper, FileText, MicVocal } from "lucide-svelte";
-    const ALBUM_ICONS = [
-        { name: "Bilder", icon: Image },
-        { name: "Filmer", icon: Video },
-        { name: "Affischer", icon: Scroll },
-        { name: "Märken", icon: Shapes },
-        { name: "Tidningar", icon: Newspaper },
-        { name: "Dokument", icon: FileText },
-        { name: "Sånger", icon: MicVocal }
-    ];
-
     export interface ActionPaneProps {
         path: string;
         name: string;
@@ -18,10 +7,18 @@
 
 <script lang="ts">
     import * as Breadcrumb from "$lib/components/ui/breadcrumb/index";
+    import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index";
     import Button from "../ui/button/button.svelte";
     import { goto, invalidateAll } from "$app/navigation";
     import { languageTag, sourceLanguageTag } from "$lib/paraglide/runtime";
     import {
+        Image,
+        Video,
+        Scroll,
+        Shapes,
+        Newspaper,
+        FileText,
+        MicVocal,
         ArrowLeft,
         ArrowRight,
         ArrowUp,
@@ -31,11 +28,23 @@
         FolderSearch,
         ChevronDown,
         ArrowDownAZ,
-        Settings
+        Settings,
+        Pencil
     } from "lucide-svelte";
+    import { url } from "$lib/utils";
 
     const { path, name }: ActionPaneProps = $props();
     const splitPath = $derived(path === "" ? [] : path.split("/"));
+
+    const albumIcons = [
+        { name: "Bilder", icon: Image },
+        { name: "Filmer", icon: Video },
+        { name: "Affischer", icon: Scroll },
+        { name: "Märken", icon: Shapes },
+        { name: "Tidningar", icon: Newspaper },
+        { name: "Dokument", icon: FileText },
+        { name: "Sånger", icon: MicVocal }
+    ];
 
     // This accounts for the fact that server hooks don't get called when we run goto()
     // Server hooks are used here to determine language settings
@@ -43,12 +52,12 @@
     const getLanguageTag = () => (languageTag() !== sourceLanguageTag ? "/" + languageTag() : "");
 
     const getSlicedHref = (index: number) => {
-        return "/archive/" + splitPath.slice(0, index).join("/");
+        return "/" + url("archive", ...splitPath.slice(0, index));
     };
 </script>
 
 {#snippet breadcrumb(slug: string)}
-    {@const album = ALBUM_ICONS.find(({ name }) => name === slug)}
+    {@const album = albumIcons.find(({ name }) => name === slug)}
     {#if album}
         <album.icon class="size-4" />
     {:else}
@@ -103,13 +112,32 @@
     <Button variant="outline" size="icon"><FolderSearch /></Button>
     <Button variant="outline" size="icon"><Bookmark /></Button>
 
-    <Button variant="outline" class="h-10 px-3">
+    <Button variant="outline" class="h-10">
         <ArrowDownAZ />
         <ChevronDown class="text-muted-foreground" />
     </Button>
 
-    <Button variant="outline" class="h-10 px-3">
+    <Button variant="outline" class="h-10">
         <Settings />
         <ChevronDown class="text-muted-foreground" />
     </Button>
+
+    <!-- TODO: finish this -->
+    <DropdownMenu.Root>
+        <DropdownMenu.Trigger>
+            {#snippet child({ props })}
+                <Button variant="outline" class="h-10" {...props}>
+                    <Pencil />
+                    <ChevronDown class="text-muted-foreground" />
+                </Button>
+            {/snippet}
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Content>
+            <DropdownMenu.Group>
+                <!-- i18n -->
+                <DropdownMenu.Item>Add files</DropdownMenu.Item>
+                <DropdownMenu.Item>Add album</DropdownMenu.Item>
+            </DropdownMenu.Group>
+        </DropdownMenu.Content>
+    </DropdownMenu.Root>
 </div>
