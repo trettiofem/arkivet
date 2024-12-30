@@ -1,38 +1,61 @@
-# sv
+![Logo](res/logo.png)
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+råsa pantern my beloved
 
-## Creating a project
+## Table of Contents
 
-If you're seeing this, you've probably already done this step. Congrats!
+- [Installation](#installation)
+- [API](#api)
+    - [Users](#users)
+    - [Albums](#albums)
+    - [Resources](#resources)
 
-```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Installation
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+# TODO: this.
 ```
 
-## Building
+## API
 
-To create a production version of your app:
+This is a list of all API end-points, as well as the expected HTTP methods and parameters.
 
-```bash
-npm run build
-```
+### Users
 
-You can preview the production build with `npm run preview`.
+#### `api/user/<username>`
+* `GET`: Returns the user.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+### Albums
+
+#### `api/album/<...path>`
+* `GET`: Returns the album at the given path.
+
+#### `api/album`
+- `POST`: TODO
+- `PATCH`: TODO
+- `DELETE`: TODO
+
+### Resources
+
+#### `api/resource/<...path>`
+- `GET`: Returns the resource at the given path.
+
+#### `api/resource`
+- `POST`: TODO
+- `PATCH`: TODO
+- `DELETE`: TODO
+
+#### `api/resource/comment`
+- `POST`: TODO
+- `DELETE`: TODO
+
+#### `api/resource/tag`
+- `POST`: TODO
+- `PATCH`: TODO
+- `DELETE`: TODO
+
+#### `api/resource/like`
+- `POST`: TODO
+- `DELETE`: TODO
+
+// TODO: this.

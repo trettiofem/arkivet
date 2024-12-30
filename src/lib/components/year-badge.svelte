@@ -6,6 +6,7 @@
 </script>
 
 <script lang="ts">
+    // TODO: redo
     import { Badge, type BadgeVariant } from "./ui/badge/index";
 
     const D = /D[0-9]{2}$/;

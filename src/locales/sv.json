@@ -1,6 +1,5 @@
 {
     "$schema": "https://inlang.com/schema/inlang-message-format",
-
     "nav_search": "Sök",
     "nav_explore": "Utforska",
     "nav_home": "Hem",
@@ -24,5 +23,5 @@
     "nav_open": "Öppna sidopanel",
     "nav_user_profile": "Din profil",
     "nav_user_settings": "Inställningar",
-    "nav_user_log_out": "Logga ut"
+    "nav_user_sign_out": "Logga ut"
 }

@@ -2,13 +2,11 @@
     import * as Sidebar from "$lib/components/ui/sidebar/index";
     import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index";
     import * as Avatar from "$lib/components/ui/avatar/index";
-
-    import ChevronsUpDown from "lucide-svelte/icons/chevrons-up-down";
-    import CircleUser from "lucide-svelte/icons/circle-user";
-    import Settings from "lucide-svelte/icons/settings";
-    import LogOut from "lucide-svelte/icons/log-out";
+    import { ChevronsUpDown, CircleUser, Settings, LogOut } from "lucide-svelte";
 
     import * as m from "$lib/paraglide/messages";
+
+    // TODO: add year badge after username
 </script>
 
 <Sidebar.Menu>
@@ -41,7 +39,7 @@
                 {/snippet}
             </DropdownMenu.Trigger>
             <DropdownMenu.Content
-                class="w-[--bits-dropdown-menu-anchor-width] min-w-56 rounded-lg"
+                class="w-[--bits-dropdown-menu-anchor-width] min-w-56"
                 align="start"
                 side={Sidebar.useSidebar().isMobile ? "bottom" : "right"}
                 sideOffset={4}
@@ -60,7 +58,7 @@
                 <DropdownMenu.Separator />
                 <DropdownMenu.Item>
                     <LogOut />
-                    {m.nav_user_log_out()}
+                    {m.nav_user_sign_out()}
                 </DropdownMenu.Item>
             </DropdownMenu.Content>
         </DropdownMenu.Root>

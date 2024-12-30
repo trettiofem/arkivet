@@ -1,21 +1,26 @@
 <script lang="ts">
     import * as Sidebar from "$lib/components/ui/sidebar/index";
-    
-    import House from "lucide-svelte/icons/house";
-    import History from "lucide-svelte/icons/history";
-    import Heart from "lucide-svelte/icons/heart";
-    import Image from "lucide-svelte/icons/image";
-    import Video from "lucide-svelte/icons/video";
-    import Scroll from "lucide-svelte/icons/scroll";
-    import Shapes from "lucide-svelte/icons/shapes";
-    import Newspaper from "lucide-svelte/icons/newspaper";
-    import FileText from "lucide-svelte/icons/file-text";
-    import MicVocal from "lucide-svelte/icons/mic-vocal";
+    import {
+        House,
+        History,
+        Heart,
+        Image,
+        Video,
+        Scroll,
+        Shapes,
+        Newspaper,
+        FileText,
+        MicVocal,
+        Search,
+        Album
+    } from "lucide-svelte";
+
     import NavHeader from "./nav-header.svelte";
-    import Search from "lucide-svelte/icons/search";
     import NavFooter from "./nav-footer.svelte";
 
     import * as m from "$lib/paraglide/messages";
+
+    // TODO: add transition when hovering over items in sidebar
 
     const groups = [
         {
@@ -44,6 +49,8 @@
             ]
         }
     ];
+
+    // TODO: add ability to save album
 </script>
 
 <Sidebar.Root collapsible="icon">

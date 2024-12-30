@@ -2,17 +2,18 @@
     import * as Sidebar from "$lib/components/ui/sidebar/index";
     import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index";
     import * as Avatar from "$lib/components/ui/avatar/index";
-
-    import Globe from "lucide-svelte/icons/globe";
-    import SunMoon from "lucide-svelte/icons/sun-moon";
-    import PanelLeftClose from "lucide-svelte/icons/panel-left-close";
-    import PanelLeftOpen from "lucide-svelte/icons/panel-left-open";
-
-    import Sun from "lucide-svelte/icons/sun";
-    import Moon from "lucide-svelte/icons/moon";
-    import Computer from "lucide-svelte/icons/computer";
+    import {
+        Globe,
+        SunMoon,
+        PanelLeftClose,
+        PanelLeftOpen,
+        Sun,
+        Moon,
+        Computer
+    } from "lucide-svelte";
 
     import * as m from "$lib/paraglide/messages";
+    import { setMode } from "mode-watcher";
 </script>
 
 <Sidebar.Menu>
@@ -41,7 +42,7 @@
                 {/snippet}
             </DropdownMenu.Trigger>
             <DropdownMenu.Content
-                class="w-[--bits-dropdown-menu-anchor-width] min-w-56 rounded-lg"
+                class="w-[--bits-dropdown-menu-anchor-width] min-w-56"
                 align="end"
                 side={Sidebar.useSidebar().isMobile ? "bottom" : "right"}
                 sideOffset={4}
@@ -49,16 +50,16 @@
                 <DropdownMenu.Label class="text-xs text-muted-foreground">
                     {m.nav_color_scheme()}
                 </DropdownMenu.Label>
-                <DropdownMenu.Item>
+                <DropdownMenu.Item onclick={() => setMode("light")}>
                     <Sun />
                     {m.nav_color_scheme_light()}
                 </DropdownMenu.Item>
-                <DropdownMenu.Item>
+                <DropdownMenu.Item onclick={() => setMode("dark")}>
                     <Moon />
                     {m.nav_color_scheme_dark()}
                 </DropdownMenu.Item>
                 <DropdownMenu.Separator />
-                <DropdownMenu.Item>
+                <DropdownMenu.Item onclick={() => setMode("system")}>
                     <Computer />
                     {m.nav_color_scheme_system()}
                 </DropdownMenu.Item>
@@ -68,6 +69,7 @@
 
     <Sidebar.MenuItem>
         <Sidebar.MenuButton>
+            <!-- TODO: this. -->
             {#snippet tooltipContent()}
                 {m.nav_close()}
             {/snippet}
