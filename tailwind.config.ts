@@ -45,7 +45,10 @@ const config: Config = {
                 },
                 destructive: {
                     DEFAULT: "hsl(var(--destructive) / <alpha-value>)",
-                    foreground: "hsl(var(--destructive-foreground) / <alpha-value>)"
+                    foreground: "hsl(var(--destructive-foreground) / <alpha-value>)",
+                    accent: "hsl(var(--destructive-accent) / <alpha-value>)",
+                    border: "hsl(var(--destructive-border) / <alpha-value>)",
+                    true: "hsl(var(--destructive-true) / <alpha-value>)"
                 },
                 muted: {
                     DEFAULT: "hsl(var(--muted) / <alpha-value>)",

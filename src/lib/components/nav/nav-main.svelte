@@ -20,8 +20,6 @@
 
     import * as m from "$lib/paraglide/messages";
 
-    // TODO: add transition when hovering over items in sidebar
-
     const groups = [
         {
             title: m.nav_explore(),

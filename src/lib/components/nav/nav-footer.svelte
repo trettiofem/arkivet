@@ -31,7 +31,7 @@
         <DropdownMenu.Root>
             <DropdownMenu.Trigger>
                 {#snippet child({ props })}
-                    <Sidebar.MenuButton {...props}>
+                    <Sidebar.MenuButton class="data-[state=open]:bg-sidebar-accent" {...props}>
                         <!-- TODO: fix this? -->
                         <!-- {#snippet tooltipContent()} -->
                         <!--     {"Ljusläge"} -->

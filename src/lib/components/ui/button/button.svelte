@@ -10,7 +10,7 @@
                 default: "bg-primary text-primary-foreground hover:bg-primary/90",
                 råsa: "bg-råsa text-råsa-foreground hover:bg-råsa-accent border-råsa-border border",
                 lila: "bg-lila text-lila-foreground hover:bg-lila-accent border-lila-border border",
-                destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+                destructive: "bg-destructive text-destructive-foreground hover:bg-destructive-accent border-destructive-border border",
                 outline:
                     "border-input bg-background hover:bg-accent hover:text-accent-foreground border",
                 secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",

@@ -1,24 +1,23 @@
 <script lang="ts" module>
     export interface YearBadgeProps {
         program: string;
-        year: number;
     }
 </script>
 
 <script lang="ts">
-    // TODO: redo
     import { Badge, type BadgeVariant } from "./ui/badge/index";
 
-    const D = /D[0-9]{2}$/;
-    const C = /C[0-9]{2}$/;
-    const VRAR = /VR\/AR[0-9]{2}$/;
-    const E = /E[0-9]{2}$/;
+    const { program }: YearBadgeProps = $props();
 
-    const { program, year }: YearBadgeProps = $props();
-    let variant: BadgeVariant = "outline"; // TODO: add "unknown" variant?
+    const getVariant = (program: string): BadgeVariant => {
+        if (/D[0-9]{2}$/.exec(program)) return "råsa";
+        if (/C[0-9]{2}$/.exec(program)) return "lila";
+        if (/VR\/AR[0-9]{2}$/.exec(program)) return "råsa";
 
-    if (program === "D") variant = "råsa";
-    if (program === "C") variant = "lila";
+        return "outline";
+    };
+
+    const variant = getVariant(program);
 </script>
 
-<Badge {variant}>{program}{year}</Badge>
+<Badge {variant}>{program}</Badge>

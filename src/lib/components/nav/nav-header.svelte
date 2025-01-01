@@ -5,6 +5,14 @@
     import { ChevronsUpDown, CircleUser, Settings, LogOut } from "lucide-svelte";
 
     import * as m from "$lib/paraglide/messages";
+    import YearBadge from "../year-badge.svelte";
+
+    const user = {
+        username: "ja2732jo-s",
+        name: "Jacob Johansson",
+        pfp: "https://minio.api.dsek.se/members/public/ja2732jo-s/hampton184.png",
+        program: "D21"
+    };
 
     // TODO: add year badge after username
 </script>
@@ -20,19 +28,18 @@
                         {...props}
                     >
                         <Avatar.Root class="size-8">
-                            <Avatar.Image
-                                src="https://minio.api.dsek.se/members/public/ja2732jo-s/hampton184.png"
-                                alt="@ja27jo32"
-                            />
+                            <Avatar.Image src={user.pfp} alt="@{user.username}" />
                             <Avatar.Fallback class="bg-råsa-true font-mono text-white">
-                                JJ
+                                J
                             </Avatar.Fallback>
                         </Avatar.Root>
 
-                        <div class="grid flex-1 text-left text-sm leading-tight">
-                            <span class="truncate font-semibold">Jacob Johansson</span>
-                            <span class="truncate font-mono text-xs">{"@ja2732jo-s"}</span>
+                        <div class="flex flex-col text-sm leading-tight">
+                            <span class="truncate font-semibold">{user.name} </span>
+                            <span class="truncate font-mono text-xs">@{user.username}</span>
                         </div>
+
+                        <YearBadge program={user.program} />
 
                         <ChevronsUpDown class="ml-auto" />
                     </Sidebar.MenuButton>
@@ -44,9 +51,19 @@
                 side={Sidebar.useSidebar().isMobile ? "bottom" : "right"}
                 sideOffset={4}
             >
-                <DropdownMenu.Label class="font-mono text-xs text-muted-foreground">
-                    {"@ja2732jo-s"}
+                <DropdownMenu.Label class="p-0 font-normal">
+                    <div class="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+                        <div class="flex flex-col text-sm leading-tight">
+                            <span class="truncate font-semibold">{user.name}</span>
+                            <span class="truncate font-mono text-xs">@{user.username}</span>
+                        </div>
+
+                        <YearBadge program={user.program} />
+                    </div>
                 </DropdownMenu.Label>
+
+                <DropdownMenu.Separator />
+
                 <DropdownMenu.Item>
                     <CircleUser />
                     {m.nav_user_profile()}
@@ -55,7 +72,9 @@
                     <Settings />
                     {m.nav_user_settings()}
                 </DropdownMenu.Item>
+
                 <DropdownMenu.Separator />
+
                 <DropdownMenu.Item>
                     <LogOut />
                     {m.nav_user_sign_out()}

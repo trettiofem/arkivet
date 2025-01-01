@@ -3,8 +3,8 @@ import type { RequestHandler } from "./$types";
 import { error } from "@sveltejs/kit";
 
 // TODO: change to userId?
-export const GET: RequestHandler = async (req) => {
-    const username = req.params.username;
+export const GET: RequestHandler = async ({ params }) => {
+    const username = params.username;
 
     try {
         const user = await prisma.user.findFirstOrThrow({

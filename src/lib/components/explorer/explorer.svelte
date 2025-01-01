@@ -51,7 +51,7 @@
                             <img src="/råsa.webp" alt="" class="h-[384px] w-[324px]" />
 
                             <div class="flex max-w-96 flex-col items-start gap-2">
-                                <p class="text-4xl font-semibold">{m.explorer_404_title()}</p>
+                                <p class="text-4xl font-semibold tracking-tight">{m.explorer_404_title()}</p>
                                 <p>{m.explorer_404_help_1()}</p>
                                 <ul class="list-inside list-disc">
                                     <li>{m.explorer_404_help_2()}</li>
