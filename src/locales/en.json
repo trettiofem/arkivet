@@ -22,8 +22,10 @@
     "nav_close": "Close side panel",
     "nav_open": "Open side panel",
     "nav_user_profile": "Your profile",
+    "nav_user_saved": "Saved",
     "nav_user_settings": "Settings",
     "nav_user_sign_out": "Sign out",
+    "nav_toggle": "Toggle sidebar",
 
     "explorer_menu_back": "Back",
     "explorer_menu_forward": "Forward",

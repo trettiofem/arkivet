@@ -11,8 +11,7 @@
         Newspaper,
         FileText,
         MicVocal,
-        Search,
-        Album
+        Search
     } from "lucide-svelte";
 
     import SidebarHeader from "./sidebar-header.svelte";
@@ -64,16 +63,19 @@
             <Sidebar.GroupContent>
                 <Sidebar.Menu>
                     <Sidebar.MenuItem>
-                        <Sidebar.MenuButton class="border py-2 h-auto rounded-xl">
+                        <Sidebar.MenuButton class="border py-2 h-auto rounded-xl group-data-[collapsible=icon]:rounded-md">
                             {#snippet tooltipContent()}
                                 {m.nav_search()}
                             {/snippet}
                             <Search />
                             <span class="grow">{m.nav_search()}</span>
-                            <div class="flex gap-1">
-                                <Kbd key="Ctrl" />
-                                <Kbd key="K" />
-                            </div>
+
+                            {#if !Sidebar.useSidebar().isMobile}
+                                <div class="flex gap-1">
+                                    <Kbd key="Control" display="Ctrl" />
+                                    <Kbd key="K" />
+                                </div>
+                            {/if}
                         </Sidebar.MenuButton>
                     </Sidebar.MenuItem>
                 </Sidebar.Menu>
