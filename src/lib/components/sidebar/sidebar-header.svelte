@@ -24,19 +24,21 @@
                 {#snippet child({ props })}
                     <Sidebar.MenuButton
                         size="lg"
-                        class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+                        class="h-auto rounded-xl border py-2 data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
                         {...props}
                     >
-                        <Avatar.Root class="size-8">
+                        <Avatar.Root class="size-6">
                             <Avatar.Image src={user.pfp} alt="@{user.username}" />
                             <Avatar.Fallback class="bg-råsa-true font-mono text-white">
                                 J
                             </Avatar.Fallback>
                         </Avatar.Root>
 
-                        <div class="flex flex-col text-sm leading-tight">
-                            <span class="truncate font-semibold">{user.name} </span>
-                            <span class="truncate font-mono text-xs">@{user.username}</span>
+                        <div class="flex flex-col overflow-hidden">
+                            <span class="truncate text-sm">{user.name}</span>
+                            <span class="truncate font-mono text-xs text-muted-foreground"
+                                >@{user.username}</span
+                            >
                         </div>
 
                         <YearBadge program={user.program} />

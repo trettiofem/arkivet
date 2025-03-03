@@ -96,8 +96,9 @@ export const load: PageLoad = ({ params, url }) => {
     return {
         path: splitPath.slice(0, -1).join("/"),
         name: splitPath.at(-1),
+        type: "FILE",
         albums: [],
         resources: [],
         cognates: [2002]
-    };
+    } as Album;
 };

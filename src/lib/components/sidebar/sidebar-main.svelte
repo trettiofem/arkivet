@@ -3,7 +3,7 @@
     import {
         House,
         History,
-        Heart,
+        Bookmark,
         Image,
         Video,
         Scroll,
@@ -15,10 +15,11 @@
         Album
     } from "lucide-svelte";
 
-    import NavHeader from "./nav-header.svelte";
-    import NavFooter from "./nav-footer.svelte";
+    import SidebarHeader from "./sidebar-header.svelte";
+    import SidebarFooter from "./sidebar-footer.svelte";
 
     import * as m from "$lib/paraglide/messages";
+    import Kbd from "./kbd.svelte";
 
     const groups = [
         {
@@ -26,7 +27,7 @@
             items: [
                 { title: m.nav_home(), icon: House, url: "#" },
                 { title: m.nav_latest(), icon: History, url: "#" },
-                { title: m.nav_liked(), icon: Heart, url: "#" }
+                { title: m.nav_saved(), icon: Bookmark, url: "#" }
             ]
         },
         {
@@ -53,7 +54,7 @@
 
 <Sidebar.Root collapsible="icon">
     <Sidebar.Header>
-        <NavHeader />
+        <SidebarHeader />
     </Sidebar.Header>
 
     <Sidebar.Separator />
@@ -63,13 +64,16 @@
             <Sidebar.GroupContent>
                 <Sidebar.Menu>
                     <Sidebar.MenuItem>
-                        <Sidebar.MenuButton>
-                            <!-- TODO: style closer to figma mockup -->
+                        <Sidebar.MenuButton class="border py-2 h-auto rounded-xl">
                             {#snippet tooltipContent()}
                                 {m.nav_search()}
                             {/snippet}
                             <Search />
-                            <span>{m.nav_search()}</span>
+                            <span class="grow">{m.nav_search()}</span>
+                            <div class="flex gap-1">
+                                <Kbd key="Ctrl" />
+                                <Kbd key="K" />
+                            </div>
                         </Sidebar.MenuButton>
                     </Sidebar.MenuItem>
                 </Sidebar.Menu>
@@ -105,7 +109,7 @@
     <Sidebar.Separator />
 
     <Sidebar.Footer>
-        <NavFooter />
+        <SidebarFooter />
     </Sidebar.Footer>
     <Sidebar.Rail />
 </Sidebar.Root>

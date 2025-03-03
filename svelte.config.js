@@ -17,7 +17,7 @@ const config = {
             checkOrigin: false
         },
         env: {
-            publicPrefix: "NEXT_PUBLIC_"
+            publicPrefix: "PUBLIC_"
         }
     }
 };

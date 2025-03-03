@@ -1,12 +1,12 @@
 <script lang="ts">
     import * as Sidebar from "$lib/components/ui/sidebar/index";
-    import NavMain from "$lib/components/nav/nav-main.svelte";
+    import SidebarContent from "$lib/components/sidebar/sidebar-main.svelte";
 
     let { children } = $props();
 </script>
 
 <Sidebar.Provider>
-    <NavMain />
+    <SidebarContent />
     <Sidebar.Inset>
         {@render children()}
     </Sidebar.Inset>

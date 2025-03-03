@@ -2,9 +2,9 @@
     import type { Album } from "$lib/types";
     import type { ResourceType } from "@prisma/client";
     import type { Component } from "svelte";
-    import type { ViewProps } from "./views/types";
-    import ImageView from "./views/image-view.svelte";
-    import FileView from "./views/file-view.svelte";
+    import type { ViewProps } from "../views/types";
+    import ImageView from "../views/image-view.svelte";
+    import FileView from "../views/file-view.svelte";
 
     export interface ExplorerProps {
         album: Album;
@@ -19,8 +19,8 @@
 <script lang="ts">
     import * as ContextMenu from "$lib/components/ui/context-menu/index";
     import { ScrollArea } from "$lib/components/ui/scroll-area/index.js";
-    import ActionPane from "./action-pane.svelte";
-    import YearCarousel from "./year-carousel.svelte";
+    import ActionPane from "./actions.svelte";
+    import YearCarousel from "./year-slider.svelte";
     import Button from "../ui/button/button.svelte";
     import * as m from "$lib/paraglide/messages";
 

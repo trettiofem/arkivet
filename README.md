@@ -1,14 +1,12 @@
 ![Logo](res/logo.png)
 
-råsa pantern my beloved
+råsa pantern my beloved 
 
 ## Table of Contents
 
 - [Installation](#installation)
+- [Roadmap](#roadmap)
 - [API](#api)
-    - [Users](#users)
-    - [Albums](#albums)
-    - [Resources](#resources)
 
 ## Installation
 
@@ -16,46 +14,25 @@ råsa pantern my beloved
 # TODO: this.
 ```
 
+## Roadmap
+- Year slider
+- Redo sidebar + explorer
+- Optimize for mobile
+- Finish all menus
+- Uploader
+- Viewer
+- Splash image (?)
+- TODOs
+- User page
+
+### Long-term goals
+- Update to Tailwind 4
+- Complete re-write in Vue
+
 ## API
 
 This is a list of all API end-points, as well as the expected HTTP methods and parameters.
 
-### Users
-
-#### `api/user/<username>`
-* `GET`: Returns the user.
-
-### Albums
-
-#### `api/album/<...path>`
-* `GET`: Returns the album at the given path.
-
-#### `api/album`
-- `POST`: TODO
-- `PATCH`: TODO
-- `DELETE`: TODO
-
-### Resources
-
-#### `api/resource/<...path>`
-- `GET`: Returns the resource at the given path.
-
-#### `api/resource`
-- `POST`: TODO
-- `PATCH`: TODO
-- `DELETE`: TODO
-
-#### `api/resource/comment`
-- `POST`: TODO
-- `DELETE`: TODO
-
-#### `api/resource/tag`
-- `POST`: TODO
-- `PATCH`: TODO
-- `DELETE`: TODO
-
-#### `api/resource/like`
-- `POST`: TODO
-- `DELETE`: TODO
-
-// TODO: this.
+```bash
+# TODO: this.
+```

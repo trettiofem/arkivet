@@ -1,5 +1,7 @@
 <script>
     import Logo from "$lib/components/logo.svelte";
+
+    
 </script>
 
 <div class="flex grow items-center justify-center">

@@ -8,7 +8,6 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
-// TODO: rename? AlbumType or something
 enum ResourceType {
   IMAGE
   VIDEO
@@ -18,95 +17,115 @@ enum ResourceType {
   FILE
 }
 
-enum Attribute {
-  NONE
-  NSFW
-  SPOTLIT
-  UNSORTED
-}
-
 model Album {
-  id        String       @id @default(uuid())
-  path      String
-  name      String
-  type      ResourceType
-  resources Resource[]
+  path String       @id
+  type ResourceType
 
-  @@map("Albums")
+  // 1 -- *
+  resources Resource[]
+  saves     SavedAlbum[]
+
+  @@map("albums")
 }
 
 model Resource {
-  id          String       @id @default(uuid())
-  created     DateTime     @default(now())
-  updated     DateTime     @updatedAt
-  type        ResourceType
-  path        String
-  name        String
-  size        Int
-  uri         String
-  thumbnail   String?
-  attribute   Attribute // TODO: bitfield?
-  description String
-  comments    Comment[]
-  likes       Like[]
-  tags        Tag[]
-  user        User?        @relation(fields: [userId], references: [id])
-  userId      String?
-  album       Album        @relation(fields: [albumId], references: [id])
-  albumId     String
+  // General metadata
+  resource_id   String       @id @default(uuid())
+  created_at    DateTime     @default(now())
+  updated_at    DateTime     @updatedAt
+  name          String
+  type          ResourceType
+  size          Int
+  data_uri      String
+  thumbnail_uri String?
+  description   String?
 
-  @@map("Resources")
+  // Attributes
+  nsfw     Boolean
+  spotlit  Boolean
+  unsorted Boolean
+
+  // 1 -- *
+  comments Comment[]
+  saves    SavedResource[]
+  tags     Tag[]
+
+  // * -- 1
+  author    User   @relation(fields: [author_id], references: [user_id])
+  author_id String
+  album     Album  @relation(fields: [path], references: [path])
+  path      String
+
+  @@map("resources")
 }
 
 model User {
-  id       String     @id @default(uuid())
+  user_id  String  @id @default(uuid())
   username String
   program  String
   year     Int
-  pfp      String?
-  posts    Resource[]
-  comments Comment[]
-  tags     Tag[]
-  likes    Like[]
+  pfp_uri  String?
 
-  @@map("Users")
+  // 1 -- *
+  resources       Resource[]
+  comments        Comment[]
+  tags            Tag[]
+  saved_resources SavedResource[]
+  saved_albums    SavedAlbum[]
+
+  @@map("users")
 }
 
 model Comment {
-  id         String   @id @default(uuid())
-  resource   Resource @relation(fields: [resourceId], references: [id])
-  resourceId String
-  author     User     @relation(fields: [authorId], references: [id])
-  authorId   String
+  comment_id String   @id @default(uuid())
   text       String
-  created    DateTime
+  created_at DateTime
 
-  @@map("Comments")
+  // * -- 1
+  resource    Resource @relation(fields: [resource_id], references: [resource_id])
+  resource_id String
+  author      User     @relation(fields: [author_id], references: [user_id])
+  author_id   String
+
+  @@map("comments")
 }
 
 model Tag {
-  id         String   @id @default(uuid())
-  resource   Resource @relation(fields: [resourceId], references: [id])
-  resourceId String
-  user       User     @relation(fields: [userId], references: [id])
-  userId     String
+  // * -- 1
+  resource       Resource @relation(fields: [resource_id], references: [resource_id])
+  resource_id    String
+  tagged_user    User     @relation(fields: [tagged_user_id], references: [user_id])
+  tagged_user_id String
 
   // For use with images specifically
-  floatingTag Boolean
-  top         Decimal @default(0)
-  left        Decimal @default(0)
-  width       Decimal @default(0)
-  height      Decimal @default(0)
+  use_floating_tag Boolean
+  top              Decimal @default(0.0)
+  left             Decimal @default(0.0)
+  width            Decimal @default(0.0)
+  height           Decimal @default(0.0)
 
-  @@map("Tags")
+  @@id([resource_id, tagged_user_id])
+  @@map("tags")
 }
 
-model Like {
-  id         String   @id @default(uuid())
-  user       User     @relation(fields: [userId], references: [id])
-  userId     String
-  resource   Resource @relation(fields: [resourceId], references: [id])
-  resourceId String
+model SavedResource {
+  // * -- 1
+  user        User     @relation(fields: [user_id], references: [user_id])
+  user_id     String
+  resource    Resource @relation(fields: [resource_id], references: [resource_id])
+  resource_id String
 
-  @@map("Likes")
+  @@id([user_id, resource_id])
+  @@map("saved_resources")
+}
+
+model SavedAlbum {
+  // * -- 1
+  user    User   @relation(fields: [user_id], references: [user_id])
+  user_id String
+  album   Album  @relation(fields: [path], references: [path])
+  path    String
+
+  @@id([user_id, path])
+  @@map("saved_albums")
 }

@@ -4,15 +4,13 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "dotenv -e .env.local -- vite dev",
+    "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "format": "prettier --write .",
-    "lint": "prettier --check .",
-    "env": "vercel env pull",
-    "postinstall": "prisma generate"
+    "lint": "prettier --check ."
   },
   "devDependencies": {
     "@inlang/paraglide-js": "1.11.3",
@@ -40,9 +38,7 @@
   "dependencies": {
     "@inlang/paraglide-sveltekit": "0.15.0",
     "@prisma/client": "^6.1.0",
-    "@supabase/ssr": "^0.5.2",
-    "@supabase/supabase-js": "^2.47.10",
-    "mode-watcher": "^0.5.0",
-    "tus-js-client": "^1.6.0"
+    "minio": "^8.0.4",
+    "mode-watcher": "^0.5.0"
   }
 }
